@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <locale>
 #include <unordered_map>
+#include <set>
 
 using std::cout;
 using std::string;
@@ -29,5 +30,6 @@ bool isNumber(const string& s);
 string toLowerLT(const string& s);
 bool isCustomPunct(char c);
 int UTF8(const string& str);
+void findWordLocations(const string& inputFileName, const string& outputFileName);
 
 #endif // MYLIB_H_INCLUDED
