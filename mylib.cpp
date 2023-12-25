@@ -83,3 +83,58 @@ void countWords(const string& inputFileName, const string& outputFileName) {
     inputFile.close();
     outputFile.close();
 }
+
+void findWordLocations(const string& inputFileName, const string& outputFileName) {
+    ifstream inputFile(inputFileName);
+    if (!inputFile) {
+        std::cerr << "Nepavyko atidaryti failo: " << inputFileName << endl;
+        return;
+    }
+
+    map<string, std::pair<int, std::set<int>>> wordDetails; // set tures linijos numerius
+    string line, word;
+    int lineNumber = 0;
+
+    while (getline(inputFile, line)) {
+        ++lineNumber;
+        std::istringstream iss(line);
+        while (iss >> word) {
+            word.erase(remove_if(word.begin(), word.end(), isCustomPunct), word.end());
+            word.erase(remove_if(word.begin(), word.end(), ::isdigit), word.end());
+            word = toLowerLT(word);
+            if (!isNumber(word) && !word.empty()) {
+                wordDetails[word].first += 1;          // Zodzio kartojimas
+                wordDetails[word].second.insert(lineNumber); // linijos numeris
+            }
+        }
+    }
+    inputFile.close();
+
+    ofstream outputFile(outputFileName);
+    if (!outputFile) {
+        std::cerr << "Nepavyko atidaryti faila: " << outputFileName << endl;
+        return;
+    }
+    outputFile << string(161, '-') << endl;
+    outputFile << left << setw(20) << "Zodis" << "|" << "Eiluciu numeriai" << endl;
+    outputFile << string(161, '-') << endl;
+
+    for (const auto &pair : wordDetails) {
+        const string &word = pair.first;
+        int count = pair.second.first;
+        const std::set<int> &lines = pair.second.second;
+
+        if (count > 1) { // Tikrinama, ar zodis atsiranda tekste daugiau nei viena karta
+            int UTF8Taisymas = word.size() - UTF8(word);
+            outputFile << left << setw(20 + UTF8Taisymas) << word << "| ";
+            for (int lineNum : lines) {
+                outputFile << lineNum << " ";
+            }
+            outputFile << "\n";
+            outputFile << string(161, '-') << "\n";
+
+        }
+    }
+
+    outputFile.close();
+}
