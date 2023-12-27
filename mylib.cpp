@@ -44,14 +44,13 @@ int UTF8(const string& str) {
 }
 
 
-void countWords(const string& inputFileName, const string& outputFileName) {
+void countWords(const string& inputFileName, const string& outputFileName, std::map<string, int>& wordCount) {
     std::ifstream inputFile(inputFileName);
     if (!inputFile) {
         std::cerr << "Nepavyko atidaryti faila: " << inputFileName << endl;
         return;
     }
 
-    std::map<string, int> wordCount;
     string line, word;
     while (getline(inputFile, line)) {
         std::istringstream iss(line);
@@ -84,14 +83,13 @@ void countWords(const string& inputFileName, const string& outputFileName) {
     outputFile.close();
 }
 
-void findWordLocations(const string& inputFileName, const string& outputFileName) {
+void findWordLocations(const string& inputFileName, const string& outputFileName, map<string, std::pair<int, std::set<int>>>& wordDetails) {
     ifstream inputFile(inputFileName);
     if (!inputFile) {
         std::cerr << "Nepavyko atidaryti failo: " << inputFileName << endl;
         return;
     }
 
-    map<string, std::pair<int, std::set<int>>> wordDetails; // set tures linijos numerius
     string line, word;
     int lineNumber = 0;
 
@@ -167,7 +165,7 @@ bool isValidDomain(const string& url, const set<string>& domain) {
     return false;
 }
 
-void findURL(const set<string>& domain, const string& inputFileName, const string& outputFileName) {
+void findURL(const set<string>& domain, const string& inputFileName, const string& outputFileName, set<string>& validUrls) {
     ifstream inputFile(inputFileName);
     ofstream outputFile(outputFileName);
     string line;
@@ -200,6 +198,7 @@ void findURL(const set<string>& domain, const string& inputFileName, const strin
             }
             // Tikrinama, ar url yra tinkamas
             if(isValidDomain(url, domain)) {
+                validUrls.insert(url);
                 outputFile << url << endl;
                 outputFile << string(50, '-') << endl;
             }
