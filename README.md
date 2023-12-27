@@ -37,3 +37,9 @@ iveskite E. Šiuo atvėju irgi reikės ivest failo su teksta pavadinima ir failo
 3. Jei norite surast URL adresus iš teksto, iveskite L. Šiuo atvėju dar reikės pateikt
 domenų failo pavadinima, kuriame bus tie domenai, kuriu adresus jus norite surast. Kaip
 ir kitais atvejais po to ivedamas teksto failo pavadinimas ir išvedimo failo pavadinimas.
+
+
+# Kaip atrodo rezultatai
+Tokius rezultatus išveda funkcijos countWords, findWordLocations ir findURL:
+
+![image](https://github.com/RatmirSemionov/Egzaminas/assets/144428344/2f15f767-e457-4201-b8df-99d74ba2648a)
