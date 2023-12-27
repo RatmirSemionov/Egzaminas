@@ -25,3 +25,15 @@ domenus į set tolesniu panaudojimui.
 8. Funkcija isValidDomain, kuri užtikrina ar rastas URL adresas tekste turi
 tinkama domeni.
 9. Funkcija findURL, kuri suranda URL adresus tekste ir išveda rezultatus.
+
+# Naudojimosi instrukcija
+Paleidžiant programą, yra 3 pasirinkimai:
+1. Jei norite surast žodžius iš teksto, kurie kartojasi daugiau nei vieną kartą,
+iveskite K. Šiuo atvėju reikės ivest failo su teksta pavadinima ir failo pavadinima,
+į kuri norite išvest rezultatus.
+2. Jei norite surast eilučių numerius žodžių, kurie kartojasi daugiau nei vieną kartą,
+iveskite E. Šiuo atvėju irgi reikės ivest failo su teksta pavadinima ir failo pavadinima,
+į kuri norite išvest rezultatus.
+3. Jei norite surast URL adresus iš teksto, iveskite L. Šiuo atvėju dar reikės pateikt
+domenų failo pavadinima, kuriame bus tie domenai, kuriu adresus jus norite surast. Kaip
+ir kitais atvejais po to ivedamas teksto failo pavadinimas ir išvedimo failo pavadinimas.
