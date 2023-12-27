@@ -28,13 +28,13 @@ using std::regex;
 using std::sregex_iterator;
 using std::set;
 
-void countWords(const string& inputFileName, const string& outputFileName);
+void countWords(const string& inputFileName, const string& outputFileName, std::map<string, int>& wordCount);
 bool isNumber(const string& s);
 string toLowerLT(const string& s);
 bool isCustomPunct(char c);
 int UTF8(const string& str);
-void findWordLocations(const string& inputFileName, const string& outputFileName);
+void findWordLocations(const string& inputFileName, const string& outputFileName, map<string, std::pair<int, std::set<int>>>& wordDetails);
 void Domains (const string& domainFileName, set<string>& domain);
 bool isValidDomain(const string& url, const set<string>& domain);
-void findURL (const set<string>& domain, const string& inputFileName, const string& outputFileName);
+void findURL (const set<string>& domain, const string& inputFileName, const string& outputFileName, set<string>& validUrls);
 #endif // MYLIB_H_INCLUDED
