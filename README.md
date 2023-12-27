@@ -6,6 +6,13 @@ straipsniais. Funkcijos turi galimybe ieškot žodžius tekste, skaičiuot
 kiek kartu jie atsiranda tekste, rodyt kurioje eilutėje iš teksto tie
 žodžiai yra ir dar ieškot URL adresus, jei tokie yra.
 
+# Panaudotas tekstas
+Šiam užduočiui naudojau teksta iš vikipedijos apie Europos Sąjunga:
+https://lt.wikipedia.org/wiki/Europos_S%C4%85junga
+Iš šito puslapio tik nebuvo įkeltas į teksto dalį skyrius "Istorija ir plėtra",
+nes ten mažai žodžių ir tekstas yra su integruotais paveiksleliais.
+Be to skyrio teksto žodžių skaičius yra: 1665.
+
 # Sukurtos funkcijos
 Darbui buvo sukurtos 9 funkcijos.
 1. Funkcija isNumber, kuri padeda funkcijai countWords ištrint numerius,
