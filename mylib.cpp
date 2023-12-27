@@ -138,3 +138,74 @@ void findWordLocations(const string& inputFileName, const string& outputFileName
 
     outputFile.close();
 }
+
+void Domains (const string& domainFileName, set<string>& domain) {
+    ifstream domainFile(domainFileName);
+    string TLD;
+    if (domainFile.is_open()) {
+        while (getline(domainFile, TLD)) {
+            if (!TLD.empty()) {
+                domain.insert(TLD);
+            }
+        }
+        domainFile.close();
+    }
+    else {
+        cout << "Nepavyko atidaryti faila: " << domainFileName << endl;
+        exit(1);
+    }
+}
+
+bool isValidDomain(const string& url, const set<string>& domain) {
+    size_t lastDotPos = url.rfind(".");
+    if (lastDotPos != string::npos) {
+        string tld = url.substr(lastDotPos + 1);
+        if (domain.find(tld) != domain.end()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void findURL(const set<string>& domain, const string& inputFileName, const string& outputFileName) {
+    ifstream inputFile(inputFileName);
+    ofstream outputFile(outputFileName);
+    string line;
+
+    if (!inputFile.is_open()) {
+        cout << "Nepavyko atidaryti pradinio failo: " << inputFileName << endl;
+        exit(1);
+    }
+
+    if (!outputFile.is_open()) {
+        cout << "Nepavyko atidaryti rezultatu failo: " << outputFileName << endl;
+        exit(1);
+    }
+
+    regex urlRegex(R"((https?:\/\/|ftp:\/\/|www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/)?)");
+    outputFile << string(50, '-') << endl;
+    outputFile << "URL Adresai" << endl;
+    outputFile << string(50, '-') << endl;
+    while (getline(inputFile, line)) {
+        auto words_begin = sregex_iterator(line.begin(), line.end(), urlRegex);
+        auto words_end = sregex_iterator();
+
+        for (sregex_iterator i = words_begin; i != words_end; ++i) {
+            std::smatch match = *i;
+            string url = match.str();
+            size_t pathStart = url.find('/', url.find("//") + 2);
+
+            if (pathStart != string::npos) {
+                url.erase(pathStart);
+            }
+            // Tikrinama, ar url yra tinkamas
+            if(isValidDomain(url, domain)) {
+                outputFile << url << endl;
+                outputFile << string(50, '-') << endl;
+            }
+        }
+    }
+
+    inputFile.close();
+    outputFile.close();
+}
