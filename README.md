@@ -13,6 +13,13 @@ Iš šito puslapio tik nebuvo įkeltas į teksto dalį skyrius "Istorija ir plė
 nes ten mažai žodžių ir tekstas yra su integruotais paveiksleliais.
 Be to skyrio teksto žodžių skaičius yra: 1665.
 
+# Panaudoti domenai
+Kadangi URL suradimui naudojau domenus, kad surast tinkamus URL adresus
+net jeigu nera adreso protokolo, naudojau domenus iš šito puslapio:
+https://www.iana.org/domains/root/files Ten yra atskiras failas su visais
+surašytais domenais, kuris yra dažnai atnaujinamas, jei atsiranda nauji
+domenai.
+
 # Sukurtos funkcijos
 Darbui buvo sukurtos 9 funkcijos.
 1. Funkcija isNumber, kuri padeda funkcijai countWords ištrint numerius,
