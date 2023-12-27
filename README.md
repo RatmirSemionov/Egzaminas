@@ -41,6 +41,9 @@ tinkama domeni.
 9. Funkcija findURL, kuri suranda URL adresus tekste ir išveda rezultatus.
 
 # Naudojimosi instrukcija
+Iš pradžių bus klausimas, ar mes norim išvest rezultatą dar į ekraną, jei
+ivest T, tai kai programa atliks veiksmus mes matysim rezultatus ne tik
+atskirame faile, bet ir iškart ekrane.
 Paleidžiant programą, yra 3 pasirinkimai:
 1. Jei norite surast žodžius iš teksto, kurie kartojasi daugiau nei vieną kartą,
 iveskite K. Šiuo atvėju reikės ivest failo su teksta pavadinima ir failo pavadinima,
